@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cchv43eug6720" path="res://personaje.gd" id="1_pj"]
 [ext_resource type="PackedScene" uid="uid://bkmexfnojlmxi" path="res://personaje/character-male-a.glb" id="2_modelo"]
+[ext_resource type="Script" path="res://camara_sigue.gd" id="3_camara"]
 
 [sub_resource type="ProceduralSkyMaterial" id="CieloMat"]
 
@@ -79,8 +80,11 @@ surface_material_override/0 = SubResource("CajaMat")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cajas/Caja3" unique_id=1180650790]
 shape = SubResource("CajaForma")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=230708766]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=230708766 node_paths=PackedStringArray("objetivo")]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 5, 7)
+script = ExtResource("3_camara")
+objetivo = NodePath("../Personaje")
+distancia = Vector3(0, 12, 4)
 
 [node name="Personaje" type="CharacterBody3D" parent="." unique_id=1594534788 node_paths=PackedStringArray("camara")]
 script = ExtResource("1_pj")
